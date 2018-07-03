@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layout');
-});
+// Route::get('/', function () {
+//     return view('layout');
+// });
+//Frontend site................
+Route::get('/', 'HomeController@index');
+
+
+//Backend routes.................
+Route::get('/backend', 'AdminController@index');
+
+
