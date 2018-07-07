@@ -38,4 +38,23 @@ class CategoryController extends Controller
     	return Redirect::to('/add-category');
 
     }
+    public function unactive_category($category_id)
+    {
+        DB::table('tbl_category')
+            ->where('category_id',$category_id)
+            ->update(['publication_status'=>0]);
+        Session::put('message','Category Unactived Succcessfully');
+        return Redirect::to('/all-category');
+
+    }
+    public function active_category($category_id)
+    {
+        DB::table('tbl_category')
+            ->where('category_id',$category_id)
+            ->update(['publication_status'=>1]);
+        Session::put('message','Category Actived Succcessfully');
+        return Redirect::to('/all-category');
+
+    }
+
 }
