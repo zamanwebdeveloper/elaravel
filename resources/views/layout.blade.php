@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>Home | ZamanStore</title>
     <link href="{{asset('frontend/css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('frontend/css/prettyPhoto.css')}}" rel="stylesheet">
@@ -90,7 +90,7 @@
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
                                 <li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                                <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="{{URL::to('/admin')}}"><i class="fa fa-lock"></i> Login</a></li>
                             </ul>
                         </div>
                     </div>

@@ -18,8 +18,15 @@
 Route::get('/', 'HomeController@index');
 
 
-//Backend routes.................
+//Backend routes......................
+Route::get('/logout','SupperAdminController@logout');
 Route::get('/admin', 'AdminController@index');
 Route::get('/dashboard', 'AdminController@show_dashboard');
+Route::post('/admin-dashboard', 'AdminController@dashboard');
+
+//Catrgory Related Route
+Route::get('/add-category','CategoryController@index');
+
+
 
 
