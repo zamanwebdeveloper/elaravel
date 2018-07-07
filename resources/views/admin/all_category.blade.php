@@ -61,7 +61,7 @@
 										</a>
 									@endif
 
-									<a class="btn btn-info" href="#">
+									<a class="btn btn-info" href="{{URL::to('/edit-category/'.$v_category->category_id)}}">
 										<i class="halflings-icon white edit"></i>  
 									</a>
 									<a class="btn btn-danger" href="#">
