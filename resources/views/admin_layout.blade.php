@@ -421,7 +421,20 @@
 		<script src="{{asset('backend/js/counter.js')}}"></script>	
 		<script src="{{asset('backend/js/retina.js')}}"></script>
 		<script src="{{asset('backend/js/custom.js')}}"></script>
+		<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js')}}"></script>
+
 	<!-- end: JavaScript-->
-	
+		<script>
+            $(document).on("click", "#delete", function(e) {
+                e.preventDefault();
+                var link = $(this).attr("href"); // "get" the intended link in a var
+
+                bootbox.confirm("Are you sure want to Delete?", function(confirmed) {
+                    if (confirmed) {
+                        window.location.href = link;  // if result, "set" the document location
+                    }
+                });
+            });
+		</script>
 </body>
 </html>

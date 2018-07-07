@@ -78,10 +78,14 @@ class CategoryController extends Controller
             ->update($data);
         Session::get('message','Category Update Successfully');
         return Redirect::to('/all-category');
-
-
-
-
+    }
+    public function delete_category($category_id)
+    {
+        DB::table('tbl_category')
+            ->where('category_id',$category_id)
+            ->delete();
+        Session::get('message','Category Delete Successfully');
+        return Redirect::to('/all-category');
 
     }
 
