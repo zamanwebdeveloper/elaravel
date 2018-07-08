@@ -16,9 +16,7 @@
             echo $message;
             Session::put('message', null);
         }
-
         ?>
-
 	</p>
 			<div class="row-fluid sortable">		
 				<div class="box span12">

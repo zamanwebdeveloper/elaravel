@@ -25,6 +25,7 @@ Route::get('/dashboard', 'AdminController@show_dashboard');
 Route::post('/admin-dashboard', 'AdminController@dashboard');
 
 //Catrgory Related Route
+
 Route::get('/add-category','CategoryController@index');
 Route::get('/all-category','CategoryController@all_category');
 Route::post('/save-category','CategoryController@save_category');
@@ -33,6 +34,13 @@ Route::get('/delete-category/{category_id}','CategoryController@delete_category'
 Route::post('/update-category/{category_id}','CategoryController@update_category');
 Route::get('/unactive-category/{category_id}','CategoryController@unactive_category');
 Route::get('/active-category/{category_id}','CategoryController@active_category');
+
+//Manufacture or Brands Route are here
+Route::get('/add-manufacture','ManufactureController@index');
+Route::post('/save-manufacture','ManufactureController@save_manufacture');
+Route::get('/all-manufacture','ManufactureController@all_manufacture');
+Route::get('/delete-manufacture/{manufacture_id}','ManufactureController@delete_manufacture');
+
 
 
 
