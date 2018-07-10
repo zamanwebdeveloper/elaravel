@@ -229,36 +229,27 @@
                                 <?php
                                         }
                                  ?>
-
-
-
                             </div>
-
-
-
-
-
-
-
-
-
-
-
 
                         </div><!--/category-products-->
                     
                         <div class="brands_products"><!--brands_products-->
                             <h2>Brands</h2>
                             <div class="brands-name">
+                                <?php
+                                $all_published_manufacture=DB::table('tbl_manufacture')
+                                    ->where('publication_status',1)
+                                    ->get();
+                                foreach ($all_published_manufacture as $v_manufacture)
+                                {
+                                    ?>
+
                                 <ul class="nav nav-pills nav-stacked">
-                                    <li><a href="#"> <span class="pull-right">(50)</span>Acne</a></li>
-                                    <li><a href="#"> <span class="pull-right">(56)</span>Grüne Erde</a></li>
-                                    <li><a href="#"> <span class="pull-right">(27)</span>Albiro</a></li>
-                                    <li><a href="#"> <span class="pull-right">(32)</span>Ronhill</a></li>
-                                    <li><a href="#"> <span class="pull-right">(5)</span>Oddmolly</a></li>
-                                    <li><a href="#"> <span class="pull-right">(9)</span>Boudestijn</a></li>
-                                    <li><a href="#"> <span class="pull-right">(4)</span>Rösch creative culture</a></li>
+                                    <li><a href="#"> <span class="pull-right">(50)</span>{{$v_manufacture->manufacture_name}}</a></li>
                                 </ul>
+                                    <?php
+                                    }
+                                    ?>
                             </div>
                         </div><!--/brands_products-->
                         

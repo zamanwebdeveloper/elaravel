@@ -45,6 +45,8 @@ Route::post('/update-manufacture/{manufacture_id}','ManufactureController@update
 Route::get('/unactive-manufacture/{manufacture_id}','ManufactureController@unactive_manufacture');
 Route::get('/active-manufacture/{manufacture_id}','ManufactureController@active_manufacture');
 
+//Products Route are here
+Route::get('/add-product','ProductController@index');
 
 
 
