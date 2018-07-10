@@ -43,8 +43,19 @@
         <div class="control-group">
                 <label class="control-label" for="selectError3">Product Category</label>
                 <div class="controls">
-                  <select id="selectError3">
-                    <option>Option 1</option>
+                  <select id="selectError3" name="category_id">
+                      <option>Select Category</option>
+                      <?php
+                      $all_published_category=DB::table('tbl_category')
+                          ->where('publication_status',1)
+                          ->get();
+                      foreach ($all_published_category as $v_category)
+                      {
+                      ?>
+                    <option value="{{$v_category->category_id}}">{{$v_category->category_name}}</option>
+                      <?php
+                      }
+                      ?>
                   </select>
                 </div>
         </div>
@@ -52,8 +63,19 @@
         <div class="control-group">
                 <label class="control-label" for="selectError3">Product Brand</label>
                 <div class="controls">
-                  <select id="selectError3">
-                    <option>Option 1</option>
+                  <select id="selectError3" name="manufacture_id">
+                    <option>Select Brand</option>
+                      <?php
+                      $all_published_manufacture=DB::table('tbl_manufacture')
+                          ->where('publication_status',1)
+                          ->get();
+                      foreach ($all_published_manufacture as $v_manufacture)
+                      {
+                      ?>
+                      <option value="{{$v_manufacture->manufacture_id}}">{{$v_manufacture->manufacture_name}}</option>
+                      <?php
+                      }
+                      ?>
                   </select>
                 </div>
         </div>
