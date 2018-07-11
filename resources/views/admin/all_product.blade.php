@@ -45,7 +45,7 @@
                             <td class="center">{{$v_product->product_name}}</td>
                             <td class="center">{{$v_product->product_short_description}}</td>
                             <td><img src="{{URL::to($v_product->product_image)}}" style="height: 80px; width: 80px;"></td>
-                            <td class="center">{{$v_product->product_price}}</td>
+                            <td class="center">{{$v_product->product_price}} Tk</td>
                             <td class="center">{{$v_product->category_name}}</td>
                             <td class="center">{{$v_product->manufacture_name}}</td>
 

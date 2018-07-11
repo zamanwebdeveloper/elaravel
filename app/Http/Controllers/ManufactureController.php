@@ -14,10 +14,12 @@ class ManufactureController extends Controller
 {
     public function index()
     {
+        $this->AdminAuthCheck();
         return view('admin.add_manufacture');
     }
     public function save_manufacture(Request $request)
     {
+        $this->AdminAuthCheck();
         $data=array();
         $data['manufacture_id']=$request->manufacture_id;
         $data['manufacture_name']=$request->manufacture_name;
@@ -30,6 +32,7 @@ class ManufactureController extends Controller
     }
     public function all_manufacture()
     {
+        $this->AdminAuthCheck();
         $all_manufacture_info=DB::table('tbl_manufacture')->get();
 
         $manage_manufacture=view('admin.all_manufacture')
@@ -39,6 +42,7 @@ class ManufactureController extends Controller
     }
     public function delete_manufacture($manufacture_id)
     {
+        $this->AdminAuthCheck();
         DB::table('tbl_manufacture')
             ->where('manufacture_id',$manufacture_id)
             ->delete();
@@ -47,6 +51,7 @@ class ManufactureController extends Controller
     }
     public function unactive_manufacture($manufacture_id)
     {
+        $this->AdminAuthCheck();
         DB::table('tbl_manufacture')
             ->where('manufacture_id',$manufacture_id)
             ->update(['publication_status'=>0]);
@@ -54,8 +59,9 @@ class ManufactureController extends Controller
         return Redirect::to('/all-manufacture');
 
     }
-        public function active_manufacture($manufacture_id)
+    public function active_manufacture($manufacture_id)
     {
+        $this->AdminAuthCheck();
         DB::table('tbl_manufacture')
             ->where('manufacture_id',$manufacture_id)
             ->update(['publication_status'=>1]);
@@ -64,6 +70,7 @@ class ManufactureController extends Controller
     }
     public  function edit_manufacture($manufacture_id)
     {
+        $this->AdminAuthCheck();
         $manufacture_info=DB::table('tbl_manufacture')
             ->where('manufacture_id',$manufacture_id)
             ->first();
@@ -74,6 +81,7 @@ class ManufactureController extends Controller
     }
     public function update_manufacture(Request $request,$manufacture_id)
     {
+        $this->AdminAuthCheck();
         $data=array();
         $data['manufacture_name']=$request->manufacture_name;
         $data['manufacture_description']=$request->manufacture_description;
@@ -84,6 +92,20 @@ class ManufactureController extends Controller
         Session::get('message','Manufacture Update Successfully');
         return Redirect::to('/all-manufacture');
     }
+
+    public function AdminAuthCheck()
+    {
+        $Session_id=Session::get('admin_id');
+        if($Session_id)
+        {
+            return;
+        }
+        else
+        {
+            return Redirect::to('/admin')->send();
+        }
+    }
+
 
 
 }

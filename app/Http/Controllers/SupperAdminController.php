@@ -11,6 +11,11 @@ session_start();
 
 class SupperAdminController extends Controller
 {
+    public function index()
+    {
+        $this->AdminAuthCheck();
+        return view('admin.dashboard');
+    }
 	public function logout()
 	{
 		// Session::put('admin_name',null);
@@ -18,4 +23,17 @@ class SupperAdminController extends Controller
 		Session::flush();
 		return Redirect::to('/admin');
 	}
+	public function AdminAuthCheck()
+    {
+        $Session_id=Session::get('admin_id');
+        if($Session_id)
+        {
+            return;
+        }
+        else
+        {
+            return Redirect::to('/admin')->send();
+        }
+
+    }
 }

@@ -14,13 +14,18 @@ class ProductController extends Controller
 {
     public function index()
     {
+        $this->AdminAuthCheck();
         return view('admin.add_product');
     }
+
+
     public function all_product()
     {
+        $this->AdminAuthCheck();
         $all_product_info=DB::table('tbl_products')
             ->join('tbl_category','tbl_products.category_id','=','tbl_category.category_id')
             ->join('tbl_manufacture','tbl_products.manufacture_id','=','tbl_manufacture.manufacture_id')
+            ->select('tbl_products.*','tbl_category.category_name','tbl_manufacture.manufacture_name')
             ->get();
 
         $manage_product=view('admin.all_product')
@@ -32,6 +37,7 @@ class ProductController extends Controller
     }
     public function save_product(Request $request)
     {
+        $this->AdminAuthCheck();
         $data=array();
         $data['product_id']=$request->product_id;
         $data['product_name']=$request->product_name;
@@ -66,6 +72,83 @@ class ProductController extends Controller
         DB::table('tbl_products')->insert($data);
         Session::put('message','Product Added Successfully Without Image!!');
         return Redirect::to('/add-product');
+    }
+    public function unactive_product($product_id)
+    {
+        $this->AdminAuthCheck();
+        DB::table('tbl_products')
+            ->where('product_id',$product_id)
+            ->update(['publication_status'=>0]);
+        Session::put('message','Product Unactived Succcessfully');
+        return Redirect::to('/all-product');
 
     }
+    public function active_product($product_id)
+    {
+        $this->AdminAuthCheck();
+        DB::table('tbl_products')
+            ->where('product_id',$product_id)
+            ->update(['publication_status'=>1]);
+        Session::put('message','Product Actived Succcessfully');
+        return Redirect::to('/all-product');
+    }
+    public function delete_product($product_id)
+    {
+        $this->AdminAuthCheck();
+        DB::table('tbl_products')
+            ->where('product_id',$product_id)
+            ->delete();
+        Session::get('message','Product Delete Successfully');
+        return Redirect::to('/all-product');
+    }
+    public  function edit_product($product_id)
+    {
+        $this->AdminAuthCheck();
+        $product_info=DB::table('tbl_products')
+            ->where('product_id',$product_id)
+            ->first();
+        $product_info=view('admin.edit_product')
+            ->with('product_info',$product_info);
+        return view('admin_layout')
+            ->with('admin.edit_product',$product_info);
+    }
+    public function update_product(Request $request,$product_id)
+    {
+        $this->AdminAuthCheck();
+        $data=array();
+        $data['product_name']=$request->product_name;
+        $data['product_short_description']=$request->product_short_description;
+        $data['product_price']=$request->product_price;
+        $data['category_id']=$request->category_id;
+        $data['manufacture_id']=$request->manufacture_id;
+
+        
+        DB::table('tbl_products')
+            ->where('product_id',$product_id)
+            ->update($data);
+        Session::get('message','Product Update Successfully.');
+        return Redirect::to('/all-product');
+
+    }
+    public function AdminAuthCheck()
+    {
+        $Session_id=Session::get('admin_id');
+        if($Session_id)
+        {
+            return;
+        }
+        else
+        {
+            return Redirect::to('/admin')->send();
+        }
+    }
+
+
+
+
 }
+
+
+
+
+
