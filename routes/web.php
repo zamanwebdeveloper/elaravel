@@ -58,3 +58,4 @@ Route::post('/update-product/{product_id}','ProductController@update_product');
 //Slider Routes are here
 Route::get('/add-slider','SliderController@index');
 Route::post('/save-slider','SliderController@save_slider');
+Route::get('/all-slider','SliderController@all_slider');

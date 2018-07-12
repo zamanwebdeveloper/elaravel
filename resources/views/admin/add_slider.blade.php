@@ -39,7 +39,7 @@
                         <div class="control-group">
                             <label class="control-label">Slider Image Upload</label>
                             <div class="controls">
-                                <input type="file" name="slider_image">
+                                <input type="file" name="slider_image" required="">
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@
                         <div class="control-group hidden-phone">
                             <label class="control-label" for="textarea2">Publication Status</label>
                             <div class="controls">
-                                <input type="checkbox" name="publication_status" value="1">
+                                <input type="checkbox" name="publication_status" value="1" required="">
                             </div>
                         </div>
                         <div class="form-actions">
