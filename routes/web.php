@@ -35,7 +35,7 @@ Route::post('/update-category/{category_id}','CategoryController@update_category
 Route::get('/unactive-category/{category_id}','CategoryController@unactive_category');
 Route::get('/active-category/{category_id}','CategoryController@active_category');
 
-//Manufacture or Brands Route are here
+//Manufacture or Brands Routes are here
 Route::get('/add-manufacture','ManufactureController@index');
 Route::post('/save-manufacture','ManufactureController@save_manufacture');
 Route::get('/all-manufacture','ManufactureController@all_manufacture');
@@ -45,7 +45,7 @@ Route::post('/update-manufacture/{manufacture_id}','ManufactureController@update
 Route::get('/unactive-manufacture/{manufacture_id}','ManufactureController@unactive_manufacture');
 Route::get('/active-manufacture/{manufacture_id}','ManufactureController@active_manufacture');
 
-//Products Route are here
+//Products Routes are here
 Route::get('/add-product','ProductController@index');
 Route::post('/save-product','ProductController@save_product');
 Route::get('/all-product','ProductController@all_product');
@@ -55,7 +55,6 @@ Route::get('/delete-product/{product_id}','ProductController@delete_product');
 Route::get('/edit-product/{product_id}','ProductController@edit_product');
 Route::post('/update-product/{product_id}','ProductController@update_product');
 
-
-
-
-
+//Slider Routes are here
+Route::get('/add-slider','SliderController@index');
+Route::post('/save-slider','SliderController@save_slider');
