@@ -199,7 +199,7 @@
                                         {
                                 ?>
                                 <div class="panel-heading">
-                                    <h4 class="panel-title"><a href="#">{{$v_category->category_name}}</a></h4>
+                                    <h4 class="panel-title"><a href="{{URL::to('/product_by_category'}}">{{$v_category->category_name}}</a></h4>
                                 </div>
                                 <?php
                                         }
