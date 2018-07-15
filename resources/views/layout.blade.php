@@ -32,8 +32,8 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li><a href="#"><i class="fa fa-phone"></i> +8801740301579</a></li>
-                                <li><a href="#"><i class="fa fa-envelope"></i> zamanwebdeveloper@gmail.com</a></li>
+                                <li><a href="{{URL::to('/')}}"><i class="fa fa-phone"></i> +8801740301579</a></li>
+                                <li><a href="{{URL::to('/')}}"><i class="fa fa-envelope"></i> zamanwebdeveloper@gmail.com</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="logo pull-left">
-                            <a href="index.html"><img src="{{('frontend/images/home/logo.png')}}" alt="" /></a>
+                            <a href="{{URL::to('/')}}"><img src="{{('frontend/images/home/logo.png')}}" alt="" /></a>
                         </div>
                         <div class="btn-group pull-right">
                             <div class="btn-group">
@@ -112,7 +112,7 @@
                         </div>
                         <div class="mainmenu pull-left">
                             <ul class="nav navbar-nav collapse navbar-collapse">
-                                <li><a href="index.html" class="active">Home</a></li>
+                                <li><a href="{{URL::to('/')}}" class="active">Home</a></li>
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
