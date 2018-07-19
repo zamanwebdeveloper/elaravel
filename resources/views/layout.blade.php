@@ -119,7 +119,7 @@
                                         <li><a href="product-details.html">Product Details</a></li> 
                                         <li><a href="{{URL::to('/login-check')}}">Checkout</a></li>
                                         <li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
-                                        <li><a href="login.html">Login</a></li> 
+                                        {{--<li><a href="login.html">Login</a></li> --}}
                                     </ul>
                                 </li> 
                                 <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
