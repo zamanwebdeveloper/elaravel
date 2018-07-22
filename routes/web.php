@@ -32,7 +32,14 @@ Route::post('/update-cart', 'CartController@update_cart');
 Route::get('/login-check', 'checkoutController@login_check');
 Route::post('/customer-registration', 'checkoutController@customer_registration');
 Route::get('/checkout', 'checkoutController@checkout');
-
+Route::post('/save-shipping-details', 'checkoutController@save_shipping_details');
+//Customer Login and Logout Routes are here
+Route::post('/customer-login', 'checkoutController@customer_login');
+Route::get('/customer-logout', 'checkoutController@customer_logout');
+Route::get('/payment', 'checkoutController@payment');
+Route::post('/order-place', 'checkoutController@order_place');
+Route::get('/manage-order', 'checkoutController@manage_order');
+Route::get('/view-order/{order_id}', 'checkoutController@view_order');
 
 
 //Backend routes......................

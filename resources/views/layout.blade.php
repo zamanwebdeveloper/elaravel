@@ -42,9 +42,9 @@
                             <ul class="nav navbar-nav">
                                 <li><a href="https://www.facebook.com/ZamanCSEDIUE44R44" target="_blank"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="https://twitter.com/MostafizZaman" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="https://www.linkedin.com/in/syed-zaman-mostafiz-4aba6414b/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="https://dribbble.com/SyedZaman" target="_blank"><i class="fa fa-dribbble"></i></a></li>
+                                <li><a href="https://plus.google.com/u/0/107456764220614665826"><i class="fa fa-google-plus"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -59,63 +59,73 @@
                         <div class="logo pull-left">
                             <a href="{{URL::to('/')}}"><img src="{{('frontend/images/home/logo.png')}}" alt="" /></a>
                         </div>
-                        <div class="btn-group pull-right">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    USA
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canada</a></li>
-                                    <li><a href="#">UK</a></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-                                    DOLLAR
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Canadian Dollar</a></li>
-                                    <li><a href="#">Pound</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        {{--<div class="btn-group pull-right">--}}
+                            {{--<div class="btn-group">--}}
+                                {{--<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">--}}
+                                    {{--USA--}}
+                                    {{--<span class="caret"></span>--}}
+                                {{--</button>--}}
+                                {{--<ul class="dropdown-menu">--}}
+                                    {{--<li><a href="#">Canada</a></li>--}}
+                                    {{--<li><a href="#">UK</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                            {{----}}
+                            {{--<div class="btn-group">--}}
+                                {{--<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">--}}
+                                    {{--DOLLAR--}}
+                                    {{--<span class="caret"></span>--}}
+                                {{--</button>--}}
+                                {{--<ul class="dropdown-menu">--}}
+                                    {{--<li><a href="#">Canadian Dollar</a></li>--}}
+                                    {{--<li><a href="#">Pound</a></li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                     </div>
                     <div class="col-sm-8">
                         <div class="shop-menu pull-right">
                             <ul class="nav navbar-nav">
                                 <li><a href="#"><i class="fa fa-user"></i> Account</a></li>
                                 <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
-                                <?php $customer_id=Session::get('customer_id'); ?>
                                 <?php
-                                if ($customer_id != NULL)
+                                    $customer_id=Session::get('customer_id');
+                                    $shippintg_id=Session::get('shipping_id');
+//                                    echo $customer_id;
+//                                    echo $shippintg_id;
+                                ?>
+                                <?php
+                                if ($customer_id != NULL && $shippintg_id == NULL)
                                 {
                                 ?>
                                 <li><a href="{{URL::to('/checkout')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <?php
                                 }
-                                else
+                                if ($customer_id != NULL && $shippintg_id != NULL)
                                 {
+                                ?>
+                                <li><a href="{{URL::to('/payment')}}"><i class="fa fa-crosshairs"></i> Payment</a></li>
+                                <?php
+                                }else{
                                 ?>
                                 <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                                 <?php
                                 }
                                 ?>
+                                {{--login-check--}}
 
                                 <li><a href="{{URL::to('/show-cart')}}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                                 <?php
                                     if ($customer_id != NULL)
                                         {
                                 ?>
-                                            <li><a href="{{URL::to('/admin')}}"><i class="fa fa-lock"></i> Logout</a></li>
+                                            <li><a href="{{URL::to('/customer-logout')}}"><i class="fa fa-lock"></i> Logout</a></li>
                                 <?php
                                         }
                                         else
                                             {
                                 ?>
-                                <li><a href="{{URL::to('/admin')}}"><i class="fa fa-lock"></i> Login</a></li>
+                                <li><a href="{{URL::to('/login-check')}}"><i class="fa fa-lock"></i> Login</a></li>
                                 <?php
                                             }
                                 ?>
@@ -146,8 +156,23 @@
                                 <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
-                                        <li><a href="product-details.html">Product Details</a></li> 
-                                        <li><a href="{{URL::to('/login-check')}}">Checkout</a></li>
+                                        <li><a href="product-details.html">Product Details</a></li>
+                                        <?php $customer_id=Session::get('customer_id'); ?>
+                                        <?php
+                                        if ($customer_id != NULL)
+                                        {
+                                        ?>
+                                        <li><a href="{{URL::to('/checkout')}}"> Checkout</a></li>
+                                        <?php
+                                        }
+                                        else
+                                        {
+                                        ?>
+                                        <li><a href="{{URL::to('/login-check')}}"> Checkout</a></li>
+                                        <?php
+                                        }
+                                        ?>
+
                                         <li><a href="{{URL::to('/show-cart')}}">Cart</a></li>
                                         {{--<li><a href="login.html">Login</a></li> --}}
                                     </ul>
